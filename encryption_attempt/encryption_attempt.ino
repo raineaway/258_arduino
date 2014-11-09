@@ -1,4 +1,6 @@
 #include <MD5.h>
+#include <Servo.h>
+Servo servoMain;
 String key = "12345";
 String main_device = "Raine";
 String devices[3] = {"", "", ""};
@@ -42,7 +44,11 @@ void loop()
         if (check) {
           Serial.println("Match!");
           time = 0;
-          //rotate
+          servoMain.attach(9);
+          servoMain.write(0);
+          servoMain.write(90);
+          delay(5000);
+          servoMain.write(0);
         } 
         else {
           for (int i=0; i<3; i++) {
